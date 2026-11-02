@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shabbir Ansari Portfolio</title>
+
+<meta name="description" content="Portfolio of Shabbir Ansari, graphic and communication designer in Bangalore.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: pill tab bar; About opens on a huge name over a staggered strip of work; Portfolio pairs a sticky project index with the galleries; Contact is a grid of cards. Quiet white frame, one vermilion accent. */
+:root {
+  --bg: #FFFFFF;
+  --soft: #F5F5F3;
+  --ink: #101114;
+  --muted: #62666F;
+  --line: #E7E8EB;
+  --accent: #D9482B;
+  --on-accent: #FFFFFF;
+  --shade: rgba(10, 11, 13, .94);
+  --font-head: "Bricolage Grotesque", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1012; --soft: #18191C; --ink: #F1F1F2; --muted: #A1A4AC; --line: #2B2C31;
+    --accent: #FF7A59; --on-accent: #101114; --shade: rgba(3, 3, 4, .95);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1012; --soft: #18191C; --ink: #F1F1F2; --muted: #A1A4AC; --line: #2B2C31;
+  --accent: #FF7A59; --on-accent: #101114; --shade: rgba(3, 3, 4, .95);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-padding-top: 96px; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: var(--bg); z-index: 40; }
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 1200px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3, h4 { font-family: var(--font-head); margin: 0; letter-spacing: -.02em; text-wrap: balance; }
+.eyebrow { margin: 0 0 16px; font-size: 12.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+
+/* Header + pill tabs */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); border-bottom: 1px solid var(--line); }
+.top .wrap { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; padding-top: 12px; padding-bottom: 12px; }
+.brand { font-family: var(--font-head); font-size: 19px; font-weight: 700; letter-spacing: -.02em; text-decoration: none; }
+.brand i { font-style: normal; color: var(--accent); }
+.tabs { display: flex; gap: 2px; padding: 4px; background: var(--soft); border-radius: 999px; overflow-x: auto; scrollbar-width: none; max-width: 100%; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab { flex: none; font: 500 14px/1 var(--font-body); padding: 11px 18px; border: 0; border-radius: 999px; background: transparent; color: var(--muted); cursor: pointer; white-space: nowrap; }
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { background: var(--ink); color: var(--bg); font-weight: 600; }
+.panel { padding-block: 64px 96px; }
+.panel[hidden] { display: none !important; }
+h2.page { font-size: clamp(34px, 5vw, 56px); line-height: 1.04; font-weight: 600; }
+
+/* About */
+.hero h1 { font-size: clamp(52px, 11vw, 148px); line-height: .94; font-weight: 700; letter-spacing: -.04em; }
+.hero .role { margin: 22px 0 0; font-family: var(--font-head); font-size: clamp(20px, 3vw, 32px); font-weight: 500; color: var(--accent); letter-spacing: -.01em; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 28px 72px; margin-top: 44px; align-items: start; }
+.hero-grid p { margin: 0 0 16px; max-width: 54ch; }
+.hero-grid .lead { font-size: clamp(19px, 2.2vw, 23px); line-height: 1.5; }
+.hero-grid .body { color: var(--muted); }
+.pills { list-style: none; margin: 24px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.pills li { padding: 8px 15px; border-radius: 999px; background: var(--soft); font-size: 14px; font-weight: 500; }
+.facts { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.facts li { padding: 18px; border-radius: 14px; background: var(--soft); font-size: 15px; line-height: 1.4; }
+.facts b { display: block; margin-bottom: 8px; font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.facts small { display: block; margin-top: 4px; color: var(--muted); font-size: 13px; }
+.sec-label { margin: 72px 0 18px; font-size: 12.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.feats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; align-items: start; }
+.feat { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 14px; background: var(--soft); text-decoration: none; }
+.feat:nth-child(even) { margin-top: 36px; }
+.feat img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; transition: transform .5s ease; }
+.feat:hover img { transform: scale(1.04); }
+.feat span { position: absolute; left: 12px; bottom: 12px; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.92); color: #101114; font-size: 12.5px; font-weight: 600; }
+
+/* Portfolio */
+.port { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 56px; align-items: start; }
+.index { position: sticky; top: 100px; }
+.index h2 { font-size: clamp(30px, 3.4vw, 42px); font-weight: 600; margin-bottom: 8px; }
+.index .sub { margin: 0 0 24px; color: var(--muted); font-size: 14.5px; }
+.chips { display: flex; flex-direction: column; gap: 2px; }
+.chip { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; width: 100%; padding: 10px 12px; border: 0; border-left: 3px solid transparent; border-radius: 0 8px 8px 0; background: transparent; color: var(--muted); font: 500 14.5px/1.3 var(--font-body); text-align: left; cursor: pointer; }
+.chip i { font-style: normal; font-size: 12px; font-variant-numeric: tabular-nums; opacity: .8; }
+.chip:hover { color: var(--ink); background: var(--soft); }
+.chip[aria-pressed="true"] { color: var(--ink); font-weight: 700; background: var(--soft); border-left-color: var(--accent); }
+.proj { padding-top: 64px; }
+.proj:first-of-type { padding-top: 0; }
+.proj[hidden] { display: none !important; }
+.proj-head h3 { font-size: clamp(25px, 3vw, 34px); font-weight: 600; line-height: 1.12; }
+.proj-head p { margin: 8px 0 0; max-width: 62ch; color: var(--muted); }
+.desc { margin: 16px 0 0; max-width: 70ch; color: var(--muted); font-size: 15.5px; padding: 16px 18px; background: var(--soft); border-radius: 12px; }
+.gal-wrap { margin-top: 24px; }
+h4.group { display: flex; align-items: baseline; gap: 10px; margin: 0 0 12px; font-family: var(--font-body); font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+h4.group i { font-style: normal; color: var(--muted); font-weight: 500; letter-spacing: 0; }
+.gallery { display: flex; flex-wrap: wrap; gap: 22px 14px; }
+.gallery::after { content: ""; flex-grow: 1000000; }
+.card { margin: 0; min-width: 0; flex: calc(var(--ar) * 100) 1 calc(var(--ar) * var(--h) * var(--k, 1)); }
+.zoom { display: block; width: 100%; padding: 0; border: 0; border-radius: 10px; background: var(--soft); cursor: zoom-in; overflow: hidden; box-shadow: 0 0 0 1px var(--line); }
+.zoom img { width: 100%; height: auto; transition: transform .5s ease; }
+.zoom:hover img { transform: scale(1.03); }
+.card figcaption { display: flex; flex-direction: column; padding-top: 10px; font-size: 14px; line-height: 1.35; }
+.card figcaption b { font-weight: 600; }
+.card figcaption span { color: var(--muted); font-size: 13px; }
+
+/* Contact, tools, resume */
+.lede { color: var(--muted); max-width: 52ch; margin: 16px 0 0; font-size: 18px; }
+.rows { list-style: none; margin: 40px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 900px; }
+.rows li { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 24px; border-radius: 16px; background: var(--soft); }
+.rows li > span:empty { display: none; }
+.rows .k { font-size: 11.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.rows .v { font-family: var(--font-head); font-size: clamp(18px, 2.2vw, 22px); font-weight: 600; letter-spacing: -.01em; overflow-wrap: anywhere; }
+.rows a.v { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; text-decoration-color: var(--accent); }
+.copy { margin-top: 10px; font: 600 12.5px/1 var(--font-body); letter-spacing: .06em; text-transform: uppercase; padding: 11px 16px; min-width: 84px; border: 1.5px solid var(--ink); border-radius: 999px; background: transparent; color: var(--ink); cursor: pointer; }
+.copy:hover { background: var(--ink); color: var(--bg); }
+.tool-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 44px; margin-top: 40px; max-width: 900px; }
+.tool-grid h3 { margin-bottom: 16px; font-family: var(--font-body); font-size: 12.5px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.tools, .skills { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px; }
+.tools li { display: inline-flex; align-items: center; gap: 12px; padding: 10px 20px 10px 10px; border-radius: 14px; background: var(--soft); font-weight: 600; }
+.badge { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 10px; background: var(--ink); color: var(--bg); font: 700 14px/1 var(--font-head); }
+.skills li { padding: 12px 20px; border-radius: 999px; background: var(--soft); font-weight: 500; }
+.resume { display: grid; grid-template-columns: minmax(0, 420px) minmax(0, 1fr); gap: 40px 72px; align-items: start; margin-top: 40px; }
+.resume-page { display: block; border-radius: 12px; overflow: hidden; box-shadow: 0 0 0 1px var(--line), 0 24px 48px -28px rgba(0,0,0,.45); }
+.resume-page img { width: 100%; height: auto; }
+.resume-side p { margin: 0 0 22px; color: var(--muted); max-width: 50ch; }
+.btn { display: inline-flex; align-items: center; min-height: 50px; padding: 0 28px; border-radius: 999px; font: 600 15px/1 var(--font-body); text-decoration: none; background: var(--accent); color: var(--on-accent); }
+.btn:hover { filter: brightness(1.07); }
+footer { border-top: 1px solid var(--line); padding-block: 28px 44px; font-size: 13px; color: var(--muted); }
+footer p { margin: 0 0 4px; max-width: 80ch; }
+
+/* Lightbox */
+.lb { position: fixed; inset: 0; z-index: 100; background: var(--shade); display: grid; grid-template-rows: minmax(0, 1fr) auto; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.lb[hidden] { display: none !important; }
+.lb-stage { min-height: 0; display: grid; place-items: center; }
+.lb-stage img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 6px; }
+.lb-bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px 20px; padding-top: 14px; color: #F4F4F6; }
+.lb-cap strong { display: block; font-size: 16px; }
+.lb-cap span { font-size: 13px; opacity: .75; }
+.lb-ctl { display: flex; gap: 8px; align-items: center; }
+.lb-ctl em { font-style: normal; font-size: 13px; opacity: .75; margin-right: 8px; font-variant-numeric: tabular-nums; }
+.lb-ctl button { width: 46px; height: 46px; border: 1.5px solid #F4F4F6; border-radius: 50%; background: transparent; color: #F4F4F6; font-size: 20px; line-height: 1; cursor: pointer; }
+.lb-ctl button:hover { background: #F4F4F6; color: #0F1012; }
+
+@media (max-width: 960px) {
+  .port { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .index { position: static; }
+  .chips { flex-direction: row; overflow-x: auto; gap: 8px; scrollbar-width: none; margin-right: -20px; padding-right: 20px; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; width: auto; gap: 10px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+  .hero-grid, .resume { grid-template-columns: minmax(0, 1fr); }
+  .feats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .feat:nth-child(even) { margin-top: 0; }
+  .panel { padding-block: 44px 72px; }
+  .gallery { --k: 1.3; }
+  html { scroll-padding-top: 130px; }
+}
+@media (max-width: 560px) {
+  .top .wrap { padding-top: 10px; padding-bottom: 10px; }
+  .tab { padding: 10px 14px; font-size: 13.5px; }
+  .gallery { --h: 210px !important; --k: 1; gap: 18px 12px; }
+  .rows { grid-template-columns: minmax(0, 1fr); }
+  .facts { grid-template-columns: minmax(0, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .feat img, .zoom img { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#about" aria-label="Shabbir Ansari, go to About">Shabbir Ansari<i>.</i></a>
+    <nav class="tabs" role="tablist" aria-label="Portfolio sections">
+      <button type="button" class="tab" role="tab" id="tab-about" aria-controls="about" aria-selected="true" data-tab="about">About</button>
+      <button type="button" class="tab" role="tab" id="tab-portfolio" aria-controls="portfolio" aria-selected="false" data-tab="portfolio">Portfolio</button>
+      <button type="button" class="tab" role="tab" id="tab-contact" aria-controls="contact" aria-selected="false" data-tab="contact">Contact</button>
+      <button type="button" class="tab" role="tab" id="tab-tools-skills" aria-controls="tools-skills" aria-selected="false" data-tab="tools-skills">Tools &amp; Skills</button>
+      <button type="button" class="tab" role="tab" id="tab-resume" aria-controls="resume" aria-selected="false" data-tab="resume">Resume</button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="panel" id="about" role="tabpanel" aria-labelledby="tab-about">
+    <div class="wrap">
+      <div class="hero">
+        <p class="eyebrow">Bangalore, India</p>
+        <h1>Shabbir<br>Ansari</h1>
+        <p class="role">Graphic &amp; Communication Design</p>
+        <div class="hero-grid">
+          <div>
+            <p class="lead">I design with a strong eye for visual storytelling and modern layout, turning an idea into something people stop and look at.</p>
+            <p class="body">My work covers packaging, posters, advertising, typography and character design, from a first sketch through to a finished mockup. I aim for clean, impactful and visually engaging solutions, with attention to the small details that make a design feel considered.</p>
+            <ul class="pills" aria-label="Strengths">
+              <li>Visual storytelling</li><li>Emotion-driven design</li><li>Typography</li><li>Branding</li><li>Packaging</li>
+            </ul>
+          </div>
+          <ul class="facts">
+            <li><b>Studying</b>Bachelor of Design<small>LISAA School of Design, ongoing</small></li>
+            <li><b>Languages</b>English, Hindi</li>
+            <li><b>College</b>Rizvi JR College<small>2020 to 2022</small></li>
+            <li><b>School</b>Yashodham High School<small>2010 to 2020</small></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="portfolio" role="tabpanel" aria-labelledby="tab-portfolio" hidden>
+    <div class="wrap">
+      <div class="port">
+        <aside class="index" aria-label="Projects">
+          <p class="eyebrow">Portfolio</p>
+          <h2>Projects</h2>
+          <p class="sub">41 images across 9 projects. Tap any piece to see it larger.</p>
+          <div class="chips" role="group" aria-label="Filter by project"><button type="button" class="chip" data-filter="all" aria-pressed="true">All<i>41</i></button><button type="button" class="chip" data-filter="surrealism" aria-pressed="false">Surrealism Product Poster Design<i>4</i></button><button type="button" class="chip" data-filter="sock-story" aria-pressed="false">Sock Story<i>8</i></button><button type="button" class="chip" data-filter="geometric-typography" aria-pressed="false">Geometric Typography<i>3</i></button><button type="button" class="chip" data-filter="tetra-pak" aria-pressed="false">Tetra Pak Design<i>3</i></button><button type="button" class="chip" data-filter="fmcg-packaging" aria-pressed="false">FMCG Packaging Design<i>3</i></button><button type="button" class="chip" data-filter="game-design" aria-pressed="false">Game Design<i>3</i></button><button type="button" class="chip" data-filter="candle-packaging" aria-pressed="false">Sustainable Luxury Candle Brand Packaging Design<i>12</i></button><button type="button" class="chip" data-filter="corporate-advertisement" aria-pressed="false">Corporate Advertisement Campaign<i>3</i></button><button type="button" class="chip" data-filter="fmcg-poster" aria-pressed="false">FMCG Product Poster Design<i>2</i></button></div>
+        </aside>
+        <div class="projects"><section class="proj" id="proj-surrealism" data-cat="surrealism" aria-labelledby="h-surrealism"><header class="proj-head"><h3 id="h-surrealism">Surrealism Product Poster Design</h3><p>A four-poster campaign for Raw Pressery flavours. Each bottle floats among its own fruit and a frozen juice splash.</p></header><div class="gal-wrap"><div class="gallery" style="--h:280px"><figure class="card" style="--ar:0.7069"><button type="button" class="zoom" data-src="img/raw-masala-lemon.jpg" data-title="Masala Lemon" data-detail="Raw Pressery" data-cat="Surrealism Product Poster Design" aria-label="View Masala Lemon, Raw Pressery, larger"><img src="img/raw-masala-lemon.jpg" alt="Raw Pressery Masala Lemon bottle on an orange background with floating lemon slices and a juice splash" width="1131" height="1600" loading="lazy" decoding="async"></button><figcaption><b>Masala Lemon</b><span>Raw Pressery</span></figcaption></figure><figure class="card" style="--ar:0.7069"><button type="button" class="zoom" data-src="img/raw-mixed-fruit.jpg" data-title="Mixed Fruit" data-detail="Raw Pressery" data-cat="Surrealism Product Poster Design" aria-label="View Mixed Fruit, Raw Pressery, larger"><img src="img/raw-mixed-fruit.jpg" alt="Raw Pressery Mixed Fruit bottle on blush pink with pomegranate, guava, pineapple and a pink splash" width="1131" height="1600" loading="lazy" decoding="async"></button><figcaption><b>Mixed Fruit</b><span>Raw Pressery</span></figcaption></figure><figure class="card" style="--ar:0.7069"><button type="button" class="zoom" data-src="img/raw-mango.jpg" data-title="Mango" data-detail="Raw Pressery" data-cat="Surrealism Product Poster Design" aria-label="View Mango, Raw Pressery, larger"><img src="img/raw-mango.jpg" alt="Raw Pressery Alphonso Mango bottle on pale yellow with mango leaves and an orange juice splash" width="1131" height="1600" loading="lazy" decoding="async"></button><figcaption><b>Mango</b><span>Raw Pressery</span></figcaption></figure><figure class="card" style="--ar:0.7069"><button type="button" class="zoom" data-src="img/raw-lean.jpg" data-title="Lean" data-detail="Raw Pressery" data-cat="Surrealism Product Poster Design" aria-label="View Lean, Raw Pressery, larger"><img src="img/raw-lean.jpg" alt="Raw Pressery Lean fruit and vegetable juice bottle on aqua with a green splash, mint and ice" width="1131" height="1600" loading="lazy" decoding="async"></button><figcaption><b>Lean</b><span>Raw Pressery</span></figcaption></figure></div></div></section>
+<section class="proj" id="proj-sock-story" data-cat="sock-story" aria-labelledby="h-sock-story"><header class="proj-head"><h3 id="h-sock-story">Sock Story</h3><p>A playful kids&#x27; story book, 8 pages. Sunny is a cheerful sock who hopes to be picked every morning, until a day under the bed changes everything.</p></header><div class="gal-wrap"><div class="gallery" style="--h:280px"><figure class="card" style="--ar:0.7071"><button type="button" class="zoom" data-src="img/sock-1.jpg" data-title="Sock Story" data-detail="Cover" data-cat="Sock Story" aria-label="View Sock Story, Cover, larger"><img src="img/sock-1.jpg" alt="Sock Story children&#x27;s book, cover" width="990" height="1400" loading="lazy" decoding="async"></button><figcaption><b>Sock Story</b><span>Cover</span></figcaption></figure><figure class="card" style="--ar:0.7071"><button type="button" class="zoom" data-src="img/sock-2.jpg" data-title="Sock Story" data-detail="Page 2" data-cat="Sock Story" aria-label="View Sock Story, Page 2, larger"><img src="img/sock-2.jpg" alt="Sock Story children&#x27;s book, page 2" width="990" height="1400" loading="lazy" decoding="async"></button><figcaption><b>Sock Story</b><span>Page 2</span></figcaption></figure><figure class="card" style="--ar:0.7071"><button type="button" class="zoom" data-src="img/sock-3.jpg" data-title="Sock Story" data-detail="Page 3" data-cat="Sock Story" aria-label="View Sock Story, Page 3, larger"><img src="img/sock-3.jpg" alt="Sock Story children&#x27;s book, page 3" width="990" height="1400" loading="lazy" decoding="async"></button><figcaption><b>Sock Story</b><span>Page 3</span></figcaption></figure><figure class="card" style="--ar:0.7071"><button type="button" class="zoom" data-src="img/sock-4.jpg" data-title="Sock Story" data-detail="Page 4" data-cat="Sock Story" aria-label="View Sock Story, Page 4, larger"><img src="img/sock-4.jpg" alt="Sock Story children&#x27;s book, page 4" width="990" height="1400" loading="lazy" decoding="async"></button><figcaption><b>Sock Story</b><span>Page 4</span></figcaption></figure><figure class="card" style="--ar:0.7071"><button type="button" class="zoom" data-src="img/sock-5.jpg" data-title="Sock Story" data-detail="Page 5" data-cat="Sock Story" aria-label="View Sock Story, Page 5, larger"><img src="img/sock-5.jpg" alt="Sock Story children&#x27;s book, page 5" width="990" height="1400" loading="lazy" decoding="async"></button><figcaption><b>Sock Story</b><span>Page 5</span></figcaption></figure><figure class="card" style="--ar:0.7071"><button type="button" class="zoom" data-src="img/sock-6.jpg" data-title="Sock Story" data-detail="Page 6" data-cat="Sock Story" aria-label="View Sock Story, Page 6, larger"><img src="img/sock-6.jpg" alt="Sock Story children&#x27;s book, page 6" width="990" height="1400" loading="lazy" decoding="async"></button><figcaption><b>Sock Story</b><span>Page 6</span></figcaption></figure><figure class="card" style="--ar:0.7071"><button type="button" class="zoom" data-src="img/sock-7.jpg" data-title="Sock Story" data-detail="Page 7" data-cat="Sock Story" aria-label="View Sock Story, Page 7, larger"><img src="img/sock-7.jpg" alt="Sock Story children&#x27;s book, page 7" width="990" height="1400" loading="lazy" decoding="async"></button><figcaption><b>Sock Story</b><span>Page 7</span></figcaption></figure><figure class="card" style="--ar:0.7071"><button type="button" class="zoom" data-src="img/sock-8.jpg" data-title="Sock Story" data-detail="Back cover" data-cat="Sock Story" aria-label="View Sock Story, Back cover, larger"><img src="img/sock-8.jpg" alt="Sock Story children&#x27;s book, back cover" width="990" height="1400" loading="lazy" decoding="async"></button><figcaption><b>Sock Story</b><span>Back cover</span></figcaption></figure></div></div></section>
+<section class="proj" id="proj-geometric-typography" data-cat="geometric-typography" aria-labelledby="h-geometric-typography"><header class="proj-head"><h3 id="h-geometric-typography">Geometric Typography</h3><p>Two studies in geometric type: an alphabet built from cut shapes, and a Futura poster and tri-fold brochure.</p></header><div class="gal-wrap"><div class="gallery" style="--h:228px"><figure class="card" style="--ar:1.4134"><button type="button" class="zoom" data-src="img/geometric-typeface.jpg" data-title="Geometric Typeface" data-detail="Original alphabet, A3" data-cat="Geometric Typography" aria-label="View Geometric Typeface, Original alphabet, A3, larger"><img src="img/geometric-typeface.jpg" alt="Geometric alphabet of cut-shape letters in black on white, set in the word MADRID" width="1600" height="1132" loading="lazy" decoding="async"></button><figcaption><b>Geometric Typeface</b><span>Original alphabet, A3</span></figcaption></figure><figure class="card" style="--ar:0.7075"><button type="button" class="zoom" data-src="img/futura-poster.jpg" data-title="Futura Typography" data-detail="Typeface poster" data-cat="Geometric Typography" aria-label="View Futura Typography, Typeface poster, larger"><img src="img/futura-poster.jpg" alt="Light blue Futura poster with large cut letters, a 1927 date and a short history of Paul Renner&#x27;s typeface" width="1132" height="1600" loading="lazy" decoding="async"></button><figcaption><b>Futura Typography</b><span>Typeface poster</span></figcaption></figure><figure class="card" style="--ar:1.4097"><button type="button" class="zoom" data-src="img/futura-trifold.jpg" data-title="Futura Tri-fold" data-detail="Brochure with KFC advert" data-cat="Geometric Typography" aria-label="View Futura Tri-fold, Brochure with KFC advert, larger"><img src="img/futura-trifold.jpg" alt="Blue tri-fold brochure with a KFC Cluckzilla Feast Bucket advert, a Futura specimen and large Futura letterforms" width="1600" height="1135" loading="lazy" decoding="async"></button><figcaption><b>Futura Tri-fold</b><span>Brochure with KFC advert</span></figcaption></figure></div></div></section>
+<section class="proj" id="proj-tetra-pak" data-cat="tetra-pak" aria-labelledby="h-tetra-pak"><header class="proj-head"><h3 id="h-tetra-pak">Tetra Pak Design</h3><p>A three-flavour juice carton range for Fruva.</p></header><p class="desc">Fruva is a three-flavour juice carton range built on one system: a bold wordmark, a 100% Natural seal, a flavour illustration with a juice splash, and three icon callouts (Natural Goodness, Rich in Vitamin C, No Added Sugar). Back and side panels carry nutrition facts, ingredients, FSSAI certification and recycling information. Colour is the only thing that changes between flavours, so the range reads as one family on the shelf.</p><div class="gal-wrap"><div class="gallery" style="--h:190px"><figure class="card" style="--ar:1.406"><button type="button" class="zoom" data-src="img/fruva-strawberry.jpg" data-title="Strawberry Juice" data-detail="Carton dieline" data-cat="Tetra Pak Design" aria-label="View Strawberry Juice, Carton dieline, larger"><img src="img/fruva-strawberry.jpg" alt="Flat carton design for Fruva Strawberry Juice in pink" width="1600" height="1138" loading="lazy" decoding="async"></button><figcaption><b>Strawberry Juice</b><span>Carton dieline</span></figcaption></figure><figure class="card" style="--ar:1.4159"><button type="button" class="zoom" data-src="img/fruva-guava.jpg" data-title="Guava Juice" data-detail="Carton dieline" data-cat="Tetra Pak Design" aria-label="View Guava Juice, Carton dieline, larger"><img src="img/fruva-guava.jpg" alt="Flat carton design for Fruva Guava Juice in green" width="1600" height="1130" loading="lazy" decoding="async"></button><figcaption><b>Guava Juice</b><span>Carton dieline</span></figcaption></figure><figure class="card" style="--ar:1.4122"><button type="button" class="zoom" data-src="img/fruva-orange.jpg" data-title="Orange Juice" data-detail="Carton dieline" data-cat="Tetra Pak Design" aria-label="View Orange Juice, Carton dieline, larger"><img src="img/fruva-orange.jpg" alt="Flat carton design for Fruva Orange Juice in orange" width="1600" height="1133" loading="lazy" decoding="async"></button><figcaption><b>Orange Juice</b><span>Carton dieline</span></figcaption></figure></div></div></section>
+<section class="proj" id="proj-fmcg-packaging" data-cat="fmcg-packaging" aria-labelledby="h-fmcg-packaging"><header class="proj-head"><h3 id="h-fmcg-packaging">FMCG Packaging Design</h3><p>Crunchix Sour Cream &amp; Onion potato chips: pouch packaging in earthy greens and browns.</p></header><div class="gal-wrap"><h4 class="group"><span>Mockups</span><i>2</i></h4><div class="gallery" style="--h:351px"><figure class="card" style="--ar:1.25"><button type="button" class="zoom" data-src="img/crunchix-pouch-front-back.jpg" data-title="Crunchix Pouch" data-detail="Front and back" data-cat="FMCG Packaging Design" aria-label="View Crunchix Pouch, Front and back, larger"><img src="img/crunchix-pouch-front-back.jpg" alt="Crunchix potato chips pouch shown front and back on a beige background" width="1600" height="1280" loading="lazy" decoding="async"></button><figcaption><b>Crunchix Pouch</b><span>Front and back</span></figcaption></figure><figure class="card" style="--ar:1.0942"><button type="button" class="zoom" data-src="img/crunchix-pouch-standing.jpg" data-title="Crunchix Pouch" data-detail="Standing pouch" data-cat="FMCG Packaging Design" aria-label="View Crunchix Pouch, Standing pouch, larger"><img src="img/crunchix-pouch-standing.jpg" alt="Standing Crunchix Sour Cream and Onion potato chips pouch" width="1312" height="1199" loading="lazy" decoding="async"></button><figcaption><b>Crunchix Pouch</b><span>Standing pouch</span></figcaption></figure></div></div><div class="gal-wrap"><h4 class="group"><span>Dieline</span><i>1</i></h4><div class="gallery" style="--h:420px"><figure class="card" style="--ar:1.3368"><button type="button" class="zoom" data-src="img/crunchix-dieline.jpg" data-title="Crunchix Flat Design" data-detail="Pack artwork" data-cat="FMCG Packaging Design" aria-label="View Crunchix Flat Design, Pack artwork, larger"><img src="img/crunchix-dieline.jpg" alt="Flat Crunchix pack design with front panel, nutrition facts, allergen info and barcode" width="1548" height="1158" loading="lazy" decoding="async"></button><figcaption><b>Crunchix Flat Design</b><span>Pack artwork</span></figcaption></figure></div></div></section>
+<section class="proj" id="proj-game-design" data-cat="game-design" aria-labelledby="h-game-design"><header class="proj-head"><h3 id="h-game-design">Game Design</h3><p>Character design for Lord Shabbir, an armoured warrior: from the part-by-part sheet to a full render and an arena scene.</p></header><div class="gal-wrap"><div class="gallery" style="--h:231px"><figure class="card" style="--ar:1.4144"><button type="button" class="zoom" data-src="img/lord-sheet.jpg" data-title="Lord Shabbir" data-detail="Character sheet" data-cat="Game Design" aria-label="View Lord Shabbir, Character sheet, larger"><img src="img/lord-sheet.jpg" alt="Character sheet of Lord Shabbir in scaled silver armour, assembled and as separate parts" width="1000" height="707" loading="lazy" decoding="async"></button><figcaption><b>Lord Shabbir</b><span>Character sheet</span></figcaption></figure><figure class="card" style="--ar:0.6637"><button type="button" class="zoom" data-src="img/lord-render.jpg" data-title="Lord Shabbir" data-detail="Full character render" data-cat="Game Design" aria-label="View Lord Shabbir, Full character render, larger"><img src="img/lord-render.jpg" alt="Full-body render of Lord Shabbir with horned shoulder guards and scaled armour" width="1062" height="1600" loading="lazy" decoding="async"></button><figcaption><b>Lord Shabbir</b><span>Full character render</span></figcaption></figure><figure class="card" style="--ar:1.4145"><button type="button" class="zoom" data-src="img/lord-arena.jpg" data-title="Lord Shabbir" data-detail="Arena scene" data-cat="Game Design" aria-label="View Lord Shabbir, Arena scene, larger"><img src="img/lord-arena.jpg" alt="Lord Shabbir standing in a sunlit coliseum arena" width="1191" height="842" loading="lazy" decoding="async"></button><figcaption><b>Lord Shabbir</b><span>Arena scene</span></figcaption></figure></div></div></section>
+<section class="proj" id="proj-candle-packaging" data-cat="candle-packaging" aria-labelledby="h-candle-packaging"><header class="proj-head"><h3 id="h-candle-packaging">Sustainable Luxury Candle Brand Packaging Design</h3><p>Suvasa, a five-scent soy wax candle range.</p></header><p class="desc">Suvasa is a five-scent soy wax candle range with sustainability at its centre. Each box carries a hand-painted pattern drawn from its own ingredients (roses and pine, lemon and lavender, khus and mogra, sandalwood and vanilla, cinnamon and neroli), so a scent is recognisable before the box is opened. One shared layout keeps the range cohesive: a round Suvasa label on the front, and a frosted panel on the back for ingredients, safety notes and price.</p><div class="gal-wrap"><h4 class="group"><span>Mockups</span><i>5</i></h4><div class="gallery" style="--h:179px"><figure class="card" style="--ar:1.5009"><button type="button" class="zoom" data-src="img/suvasa-mockup-gulab-pine.jpg" data-title="Suvasa, Gulab Pine" data-detail="Box mockup" data-cat="Sustainable Luxury Candle Brand Packaging Design" aria-label="View Suvasa, Gulab Pine, Box mockup, larger"><img src="img/suvasa-mockup-gulab-pine.jpg" alt="Suvasa Gulab Pine soy wax candle box mockup" width="800" height="533" loading="lazy" decoding="async"></button><figcaption><b>Suvasa, Gulab Pine</b><span>Box mockup</span></figcaption></figure><figure class="card" style="--ar:1.5009"><button type="button" class="zoom" data-src="img/suvasa-mockup-lavender-lemon.jpg" data-title="Suvasa, Lavender &amp; Lemon" data-detail="Box mockup" data-cat="Sustainable Luxury Candle Brand Packaging Design" aria-label="View Suvasa, Lavender &amp; Lemon, Box mockup, larger"><img src="img/suvasa-mockup-lavender-lemon.jpg" alt="Suvasa Lavender &amp; Lemon soy wax candle box mockup" width="800" height="533" loading="lazy" decoding="async"></button><figcaption><b>Suvasa, Lavender &amp; Lemon</b><span>Box mockup</span></figcaption></figure><figure class="card" style="--ar:1.5009"><button type="button" class="zoom" data-src="img/suvasa-mockup-khus-mogra.jpg" data-title="Suvasa, Khus Mogra" data-detail="Box mockup" data-cat="Sustainable Luxury Candle Brand Packaging Design" aria-label="View Suvasa, Khus Mogra, Box mockup, larger"><img src="img/suvasa-mockup-khus-mogra.jpg" alt="Suvasa Khus Mogra soy wax candle box mockup" width="800" height="533" loading="lazy" decoding="async"></button><figcaption><b>Suvasa, Khus Mogra</b><span>Box mockup</span></figcaption></figure><figure class="card" style="--ar:1.5009"><button type="button" class="zoom" data-src="img/suvasa-mockup-chandan-vanilla.jpg" data-title="Suvasa, Chandan Vanilla" data-detail="Box mockup" data-cat="Sustainable Luxury Candle Brand Packaging Design" aria-label="View Suvasa, Chandan Vanilla, Box mockup, larger"><img src="img/suvasa-mockup-chandan-vanilla.jpg" alt="Suvasa Chandan Vanilla soy wax candle box mockup" width="800" height="533" loading="lazy" decoding="async"></button><figcaption><b>Suvasa, Chandan Vanilla</b><span>Box mockup</span></figcaption></figure><figure class="card" style="--ar:1.5009"><button type="button" class="zoom" data-src="img/suvasa-mockup-neroli-cinnamon.jpg" data-title="Suvasa, Neroli and Cinnamon" data-detail="Box mockup" data-cat="Sustainable Luxury Candle Brand Packaging Design" aria-label="View Suvasa, Neroli and Cinnamon, Box mockup, larger"><img src="img/suvasa-mockup-neroli-cinnamon.jpg" alt="Suvasa Neroli and Cinnamon soy wax candle box mockup" width="800" height="533" loading="lazy" decoding="async"></button><figcaption><b>Suvasa, Neroli and Cinnamon</b><span>Box mockup</span></figcaption></figure></div></div><div class="gal-wrap"><h4 class="group"><span>Dielines</span><i>5</i></h4><div class="gallery" style="--h:218px"><figure class="card" style="--ar:0.7124"><button type="button" class="zoom" data-src="img/suvasa-dieline-gulab-pine.jpg" data-title="Suvasa, Gulab Pine" data-detail="Box dieline" data-cat="Sustainable Luxury Candle Brand Packaging Design" aria-label="View Suvasa, Gulab Pine, Box dieline, larger"><img src="img/suvasa-dieline-gulab-pine.jpg" alt="Flat dieline for the Suvasa Gulab Pine candle box" width="1080" height="1516" loading="lazy" decoding="async"></button><figcaption><b>Suvasa, Gulab Pine</b><span>Box dieline</span></figcaption></figure><figure class="card" style="--ar:0.6943"><button type="button" class="zoom" data-src="img/suvasa-dieline-lavender-lemon.jpg" data-title="Suvasa, Lavender &amp; Lemon" data-detail="Box dieline" data-cat="Sustainable Luxury Candle Brand Packaging Design" aria-label="View Suvasa, Lavender &amp; Lemon, Box dieline, larger"><img src="img/suvasa-dieline-lavender-lemon.jpg" alt="Flat dieline for the Suvasa Lavender &amp; Lemon candle box" width="1040" height="1498" loading="lazy" decoding="async"></button><figcaption><b>Suvasa, Lavender &amp; Lemon</b><span>Box dieline</span></figcaption></figure><figure class="card" style="--ar:0.7162"><button type="button" class="zoom" data-src="img/suvasa-dieline-khus-mogra.jpg" data-title="Suvasa, Khus Mogra" data-detail="Box dieline" data-cat="Sustainable Luxury Candle Brand Packaging Design" aria-label="View Suvasa, Khus Mogra, Box dieline, larger"><img src="img/suvasa-dieline-khus-mogra.jpg" alt="Flat dieline for the Suvasa Khus Mogra candle box" width="1080" height="1508" loading="lazy" decoding="async"></button><figcaption><b>Suvasa, Khus Mogra</b><span>Box dieline</span></figcaption></figure><figure class="card" style="--ar:0.7207"><button type="button" class="zoom" data-src="img/suvasa-dieline-chandan-vanilla.jpg" data-title="Suvasa, Chandan Vanilla" data-detail="Box dieline" data-cat="Sustainable Luxury Candle Brand Packaging Design" aria-label="View Suvasa, Chandan Vanilla, Box dieline, larger"><img src="img/suvasa-dieline-chandan-vanilla.jpg" alt="Flat dieline for the Suvasa Chandan Vanilla candle box" width="1084" height="1504" loading="lazy" decoding="async"></button><figcaption><b>Suvasa, Chandan Vanilla</b><span>Box dieline</span></figcaption></figure><figure class="card" style="--ar:0.7087"><button type="button" class="zoom" data-src="img/suvasa-dieline-neroli-cinnamon.jpg" data-title="Suvasa, Neroli and Cinnamon" data-detail="Box dieline" data-cat="Sustainable Luxury Candle Brand Packaging Design" aria-label="View Suvasa, Neroli and Cinnamon, Box dieline, larger"><img src="img/suvasa-dieline-neroli-cinnamon.jpg" alt="Flat dieline for the Suvasa Neroli and Cinnamon candle box" width="1080" height="1524" loading="lazy" decoding="async"></button><figcaption><b>Suvasa, Neroli and Cinnamon</b><span>Box dieline</span></figcaption></figure></div></div><div class="gal-wrap"><h4 class="group"><span>Labels</span><i>2</i></h4><div class="gallery" style="--h:315px"><figure class="card" style="--ar:1.3051"><button type="button" class="zoom" data-src="img/suvasa-labels-white.jpg" data-title="Label sheet" data-detail="White centre" data-cat="Sustainable Luxury Candle Brand Packaging Design" aria-label="View Label sheet, White centre, larger"><img src="img/suvasa-labels-white.jpg" alt="Label sheet for the five Suvasa scents with a white centre circle" width="1600" height="1226" loading="lazy" decoding="async"></button><figcaption><b>Label sheet</b><span>White centre</span></figcaption></figure><figure class="card" style="--ar:1.3083"><button type="button" class="zoom" data-src="img/suvasa-labels-colour.jpg" data-title="Label sheet" data-detail="Colour centre" data-cat="Sustainable Luxury Candle Brand Packaging Design" aria-label="View Label sheet, Colour centre, larger"><img src="img/suvasa-labels-colour.jpg" alt="Label sheet for the five Suvasa scents with a coloured centre circle" width="1600" height="1223" loading="lazy" decoding="async"></button><figcaption><b>Label sheet</b><span>Colour centre</span></figcaption></figure></div></div></section>
+<section class="proj" id="proj-corporate-advertisement" data-cat="corporate-advertisement" aria-labelledby="h-corporate-advertisement"><header class="proj-head"><h3 id="h-corporate-advertisement">Corporate Advertisement Campaign</h3><p>Posters for Godrej, built on the idea of the good of everyone.</p></header><div class="gal-wrap"><div class="gallery" style="--h:381px"><figure class="card" style="--ar:0.7069"><button type="button" class="zoom" data-src="img/godrej-family.jpg" data-title="Good today, Better tomorrow." data-detail="Godrej poster" data-cat="Corporate Advertisement Campaign" aria-label="View Good today, Better tomorrow., Godrej poster, larger"><img src="img/godrej-family.jpg" alt="Godrej poster of a family planting a sapling in a park below a city skyline" width="1131" height="1600" loading="lazy" decoding="async"></button><figcaption><b>Good today, Better tomorrow.</b><span>Godrej poster</span></figcaption></figure><figure class="card" style="--ar:0.7069"><button type="button" class="zoom" data-src="img/godrej-fridge.jpg" data-title="Fresh Today. Better tomorrow." data-detail="Godrej poster" data-cat="Corporate Advertisement Campaign" aria-label="View Fresh Today. Better tomorrow., Godrej poster, larger"><img src="img/godrej-fridge.jpg" alt="Godrej poster of a maroon refrigerator in a warm sunlit room with four benefit icons" width="1131" height="1600" loading="lazy" decoding="async"></button><figcaption><b>Fresh Today. Better tomorrow.</b><span>Godrej poster</span></figcaption></figure><figure class="card" style="--ar:0.7069"><button type="button" class="zoom" data-src="img/godrej-two.jpg" data-title="Yaha Ideas, Bante Hain" data-detail="Godrej poster" data-cat="Corporate Advertisement Campaign" aria-label="View Yaha Ideas, Bante Hain, Godrej poster, larger"><img src="img/godrej-two.jpg" alt="Godrej poster of a team stacking hands in front of the Godrej Two glass building" width="1131" height="1600" loading="lazy" decoding="async"></button><figcaption><b>Yaha Ideas, Bante Hain</b><span>Godrej poster</span></figcaption></figure></div></div></section>
+<section class="proj" id="proj-fmcg-poster" data-cat="fmcg-poster" aria-labelledby="h-fmcg-poster"><header class="proj-head"><h3 id="h-fmcg-poster">FMCG Product Poster Design</h3><p>Raw Pressery posters in a playful Hinglish voice.</p></header><div class="gal-wrap"><div class="gallery" style="--h:420px"><figure class="card" style="--ar:0.7069"><button type="button" class="zoom" data-src="img/raw-fruits-ki-full-gang.jpg" data-title="Fruits ki Full Gang!" data-detail="Raw Pressery, Mixed Fruit" data-cat="FMCG Product Poster Design" aria-label="View Fruits ki Full Gang!, Raw Pressery, Mixed Fruit, larger"><img src="img/raw-fruits-ki-full-gang.jpg" alt="Raw Pressery poster of a smiling woman holding a Mixed Fruit bottle on a pink and lilac background" width="1131" height="1600" loading="lazy" decoding="async"></button><figcaption><b>Fruits ki Full Gang!</b><span>Raw Pressery, Mixed Fruit</span></figcaption></figure><figure class="card" style="--ar:0.71"><button type="button" class="zoom" data-src="img/raw-zindagi-lemon.jpg" data-title="Zindagi ne Lemon Diya?" data-detail="Raw Pressery, Masala Lemon" data-cat="FMCG Product Poster Design" aria-label="View Zindagi ne Lemon Diya?, Raw Pressery, Masala Lemon, larger"><img src="img/raw-zindagi-lemon.jpg" alt="Raw Pressery poster of a young man holding a Masala Lemon bottle on a yellow background" width="1136" height="1600" loading="lazy" decoding="async"></button><figcaption><b>Zindagi ne Lemon Diya?</b><span>Raw Pressery, Masala Lemon</span></figcaption></figure></div></div></section></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="contact" role="tabpanel" aria-labelledby="tab-contact" hidden>
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2 class="page">Let's work together</h2>
+      <p class="lede">Open to freelance projects and design opportunities. The quickest way to reach me is by email.</p>
+      <ul class="rows">
+        <li><span class="k">Email</span><span class="v">ansarishabbir7867@gmail.com</span><button type="button" class="copy" data-copy="ansarishabbir7867@gmail.com">Copy</button></li>
+        <li><span class="k">Phone</span><span class="v">+91 77388 63013</span><button type="button" class="copy" data-copy="+917738863013">Copy</button></li>
+        <li><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/shabbir-ansari-694659354" target="_blank" rel="noopener">Shabbir Ansari</a><span></span></li>
+        <li><span class="k">Instagram</span><a class="v" href="https://www.instagram.com/shaaabbirr._" target="_blank" rel="noopener">@shaaabbirr._</a><span></span></li>
+        <li><span class="k">Location</span><span class="v">Bangalore, India</span><span></span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="panel" id="tools-skills" role="tabpanel" aria-labelledby="tab-tools-skills" hidden>
+    <div class="wrap">
+      <p class="eyebrow">Tools &amp; skills</p>
+      <h2 class="page">What I work with</h2>
+      <div class="tool-grid">
+        <div><h3>Software</h3><ul class="tools"><li><span class="badge" aria-hidden="true">Ps</span>Photoshop</li><li><span class="badge" aria-hidden="true">Ai</span>Illustrator</li><li><span class="badge" aria-hidden="true">Id</span>InDesign</li><li><span class="badge" aria-hidden="true">Cv</span>Canva</li><li><span class="badge" aria-hidden="true">Fg</span>Figma</li><li><span class="badge" aria-hidden="true">Ae</span>After Effects</li></ul></div>
+        <div><h3>Skills</h3><ul class="skills"><li>Branding</li><li>Typography</li><li>Packaging design</li><li>Illustration</li><li>Layout design</li><li>Character design</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="resume" role="tabpanel" aria-labelledby="tab-resume" hidden>
+    <div class="wrap">
+      <p class="eyebrow">Resume</p>
+      <h2 class="page">Resume</h2>
+      <div class="resume">
+        <a class="resume-page" href="Shabbir-Ansari-Resume.pdf" target="_blank" rel="noopener" aria-label="Open the resume as a PDF">
+          <img src="img/resume.jpg" alt="Resume of Shabbir Ansari, graphic designer, with contact details, skills, education and projects" width="1273" height="1800" loading="lazy" decoding="async">
+        </a>
+        <div class="resume-side">
+          <p>One page with my summary, education, skills and projects. Open the PDF to read it at full size.</p>
+          <a class="btn" href="Shabbir-Ansari-Resume.pdf" target="_blank" rel="noopener">Open resume PDF</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>&copy; 2026 Shabbir Ansari.</p>
+    <p>Projects shown are academic and concept work. Brand names, logos and products belong to their respective owners.</p>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+  <div class="lb-stage"><img id="lb-img" alt=""></div>
+  <div class="lb-bar">
+    <div class="lb-cap"><strong id="lb-title"></strong><span id="lb-detail"></span></div>
+    <div class="lb-ctl">
+      <em id="lb-count"></em>
+      <button type="button" id="lb-prev" aria-label="Previous piece">&larr;</button>
+      <button type="button" id="lb-next" aria-label="Next piece">&rarr;</button>
+      <button type="button" id="lb-close" aria-label="Close viewer">&times;</button>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var IDS = ['about', 'portfolio', 'contact', 'tools-skills', 'resume'];
+  var tabs = document.querySelectorAll('.tab');
+  var panels = IDS.map(function (id) { return document.getElementById(id); });
+  function showTab(id, noScroll) {
+    if (IDS.indexOf(id) < 0) id = 'about';
+    tabs.forEach(function (t) { t.setAttribute('aria-selected', t.getAttribute('data-tab') === id ? 'true' : 'false'); });
+    panels.forEach(function (p) { p.hidden = p.id !== id; });
+    if (!noScroll) window.scrollTo(0, 0);
+    return id;
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function () {
+      var id = t.getAttribute('data-tab');
+      if (location.hash.slice(1) !== id) { try { location.hash = id; } catch (e) { showTab(id); } } else { showTab(id); }
+    });
+  });
+  window.addEventListener('hashchange', function () { showTab(location.hash.slice(1)); });
+  showTab(location.hash.slice(1), true);
+
+  var chips = document.querySelectorAll('.chip');
+  var projs = document.querySelectorAll('.proj');
+  function filter(f) {
+    chips.forEach(function (c) { c.setAttribute('aria-pressed', c.getAttribute('data-filter') === f ? 'true' : 'false'); });
+    projs.forEach(function (s) { s.hidden = !(f === 'all' || s.getAttribute('data-cat') === f); });
+  }
+  chips.forEach(function (c) { c.addEventListener('click', function () { filter(c.getAttribute('data-filter')); }); });
+
+  document.querySelectorAll('.feat').forEach(function (a) {
+    a.addEventListener('click', function (ev) {
+      ev.preventDefault();
+      var cat = a.getAttribute('data-go');
+      filter(cat);
+      if (location.hash.slice(1) !== 'portfolio') { try { location.hash = 'portfolio'; } catch (e) { showTab('portfolio'); } } else { showTab('portfolio'); }
+    });
+  });
+
+  var lb = document.getElementById('lb'), img = document.getElementById('lb-img');
+  var title = document.getElementById('lb-title'), detail = document.getElementById('lb-detail'), count = document.getElementById('lb-count');
+  var list = [], idx = 0, opener = null;
+  function visible() {
+    return Array.prototype.filter.call(document.querySelectorAll('.zoom'), function (b) { return !b.closest('.proj').hidden; });
+  }
+  function show(i) {
+    idx = (i + list.length) % list.length;
+    var b = list[idx];
+    img.src = b.getAttribute('data-src');
+    img.alt = b.querySelector('img').alt;
+    title.textContent = b.getAttribute('data-title');
+    detail.textContent = b.getAttribute('data-cat') + ' · ' + b.getAttribute('data-detail');
+    count.textContent = (idx + 1) + ' / ' + list.length;
+  }
+  function openLb(b) {
+    list = visible().filter(function (x) { return x.closest('.proj') === b.closest('.proj'); });
+    opener = b; show(list.indexOf(b)); lb.hidden = false; document.getElementById('lb-close').focus();
+  }
+  function closeLb() { lb.hidden = true; img.removeAttribute('src'); if (opener) opener.focus(); }
+  document.querySelectorAll('.zoom').forEach(function (b) { b.addEventListener('click', function () { openLb(b); }); });
+  document.getElementById('lb-prev').addEventListener('click', function () { show(idx - 1); });
+  document.getElementById('lb-next').addEventListener('click', function () { show(idx + 1); });
+  document.getElementById('lb-close').addEventListener('click', closeLb);
+  lb.addEventListener('click', function (ev) { if (ev.target === lb || ev.target.classList.contains('lb-stage')) closeLb(); });
+  document.addEventListener('keydown', function (ev) {
+    if (lb.hidden) return;
+    if (ev.key === 'Escape') closeLb();
+    else if (ev.key === 'ArrowLeft') show(idx - 1);
+    else if (ev.key === 'ArrowRight') show(idx + 1);
+  });
+
+  function selectText(el) {
+    var r = document.createRange(); r.selectNodeContents(el);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+  document.querySelectorAll('.copy').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      var flash = function (msg) { btn.textContent = msg; setTimeout(function () { btn.textContent = 'Copy'; }, 1800); };
+      var fallback = function () { selectText(btn.previousElementSibling); flash('Selected'); };
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(function () { flash('Copied'); }, fallback);
+        else fallback();
+      } catch (err) { fallback(); }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
